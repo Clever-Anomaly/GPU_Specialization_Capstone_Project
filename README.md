@@ -8,7 +8,20 @@ Supports **JPG, PNG, BMP, PGM** and automatically converts color images to grays
 
 ---
 
-## 📋 Prerequisites
+## Demo and Validation
+
+For a complete demonstration of this project and validation of its functionality, please refer to the **`code_run.ipynb`** notebook located in the root directory. This Jupyter notebook was executed on Google Colab and provides:
+
+- Step-by-step execution of the edge detection pipeline
+- Visual comparisons of input and output images
+- Performance metrics and validation results
+- Example use cases with different image types
+
+The notebook serves as both documentation and proof of concept for the edge detection implementation.
+
+---
+
+## Prerequisites
 
 Before building and running this project, ensure you have the following installed:
 
@@ -39,7 +52,7 @@ export PATH=$CUDA_PATH/bin:$PATH
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 **IMPORTANT:** You must be in the `edgeDetectionNPP` directory to build and run the code!
 
@@ -71,7 +84,7 @@ Results are saved to the `output/` directory:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 edgeDetectionNPP/
@@ -90,7 +103,7 @@ edgeDetectionNPP/
 
 ---
 
-## 🎯 Usage Examples
+## Usage Examples
 
 ### Basic Usage
 ```bash
@@ -140,7 +153,7 @@ ls -lh output/
 
 ---
 
-## 🎓 What This Project Does
+## What This Project Does
 
 ### Edge Detection Explained
 Edge detection identifies boundaries and transitions in images where pixel intensity changes significantly. This is fundamental to:
@@ -164,7 +177,7 @@ This project uses the **Sobel operator**, an industry-standard edge detection al
 
 ---
 
-## 🔧 Technical Details
+## Technical Details
 
 ### Key Technologies
 - **Language:** C++ with CUDA
@@ -192,7 +205,7 @@ nppiFilterSobelVertBorder_8u_C1R(...)
 
 ---
 
-## 📊 Use Cases
+## Use Cases
 
 ### Computer Vision
 - **Object boundary detection** - Find outlines of objects
@@ -210,7 +223,7 @@ nppiFilterSobelVertBorder_8u_C1R(...)
 
 ---
 
-## 🛠️ Building from Source
+## Building from Source
 
 ### Build Command
 ```bash
@@ -233,7 +246,7 @@ nvcc -O2 -o edgeDetectionNPP edgeDetectionNPP.cpp \
 
 ---
 
-## 🔍 Command-Line Options
+## Command-Line Options
 
 ```bash
 ./edgeDetectionNPP [OPTIONS]
@@ -248,7 +261,7 @@ OPTIONS:
 
 ---
 
-## 💡 Tips and Best Practices
+## Tips and Best Practices
 
 ### Image Preparation
 - Place all input images in the `input/` directory
@@ -275,7 +288,7 @@ OPTIONS:
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Build Errors
 
@@ -323,7 +336,7 @@ deviceQuery  # From CUDA samples
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 ### Documentation
 - **NPP Documentation:** https://docs.nvidia.com/cuda/npp/
@@ -342,7 +355,7 @@ deviceQuery  # From CUDA samples
 
 ---
 
-## 📝 Project Information
+## Project Information
 
 ### Version
 Edge Detection NPP - Standalone Version 1.0
@@ -357,27 +370,27 @@ This is a simplified, standalone version extracted from the larger NVIDIA NPP sa
 - **Compiler:** nvcc (NVIDIA CUDA Compiler)
 
 ### Key Features
-✨ **Multiple Format Support** - JPG, PNG, BMP, PGM, and more  
-⚡ **GPU Acceleration** - Fast processing with NVIDIA NPP  
-🎨 **Auto Grayscale Conversion** - Handles color images automatically  
-📁 **Organized I/O** - Separate input/ and output/ directories  
-🔧 **Simple Build** - One-command compilation  
-📊 **Production Ready** - Robust error handling and validation  
+- **Multiple Format Support** - JPG, PNG, BMP, PGM, and more  
+- **GPU Acceleration** - Fast processing with NVIDIA NPP  
+- **Auto Grayscale Conversion** - Handles color images automatically  
+- **Organized I/O** - Separate input/ and output/ directories  
+- **Simple Build** - One-command compilation  
+- **Production Ready** - Robust error handling and validation  
 
 ---
 
-## 🚀 Getting Started Checklist
+## Getting Started Checklist
 
 - [ ] **Verify Prerequisites** - CUDA Toolkit, NVIDIA GPU, FreeImage installed
 - [ ] **Navigate to Project** - `cd edgeDetectionNPP`
-- [ ] **Build the Project** - Run `./build.sh` or `build.bat`
+- [ ] **Build the Project** - Run `./build.sh`
 - [ ] **Add Input Images** - Copy images to `input/` directory
 - [ ] **Run Edge Detection** - `./edgeDetectionNPP --input=yourimage.jpg`
 - [ ] **View Results** - Check `output/` directory for PNG files
 
 ---
 
-## 🎉 You're Ready to Go!
+## Summary
 
 Everything is set up and ready for edge detection. Remember:
 1. **Always run from the `edgeDetectionNPP` directory**
@@ -385,7 +398,7 @@ Everything is set up and ready for edge detection. Remember:
 3. **Find results in `output/` folder**
 4. **PNG output files open in any image viewer**
 
-**Happy Edge Detecting! 🔍✨**
+For validation and demonstration, see the `code_run.ipynb` notebook in the root directory.
 
 ---
 
