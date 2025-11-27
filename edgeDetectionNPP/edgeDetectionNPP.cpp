@@ -1,14 +1,8 @@
 /* Edge Detection NPP - Sobel edge detection using NPP
  * Supports JPG, PNG, BMP, PGM and other common image formats
  * Automatically converts color images to grayscale
+ * Linux-only version
  */
-
-#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
-#define WINDOWS_LEAN_AND_MEAN
-#define NOMINMAX
-#include <windows.h>
-#pragma warning(disable : 4819)
-#endif
 
 #include <Exceptions.h>
 #include <ImagesCPU.h>
@@ -186,12 +180,12 @@ int main(int argc, char *argv[])
         if (checkCmdLineFlag(argc, (const char **)argv, "input"))
         {
             getCmdLineArgumentString(argc, (const char **)argv, "input", &filePath);
-            sFilename = filePath;
+            sFilename = std::string("input/") + filePath;
         }
         else
         {
-            // Try common test images
-            const char* testImages[] = {"Lena.pgm", "sloth.png", "grey-sloth.png", "th.jpeg"};
+            // Try common test images in input directory
+            const char* testImages[] = {"input/Lena.pgm", "input/sloth.png", "input/grey-sloth.png", "input/th.jpeg"};
             bool found = false;
             for (int i = 0; i < 4; i++)
             {
@@ -207,7 +201,7 @@ int main(int argc, char *argv[])
             }
             if (!found)
             {
-                sFilename = "Lena.pgm";
+                sFilename = "input/Lena.pgm";
             }
         }
 
@@ -217,7 +211,9 @@ int main(int argc, char *argv[])
         {
             std::cout << "Error: Unable to open file: <" << sFilename << ">" << std::endl;
             std::cout << "\nUsage: " << argv[0] << " --input=image.[jpg|png|bmp|pgm]" << std::endl;
-            std::cout << "Example: " << argv[0] << " --input=photo.jpg" << std::endl;
+            std::cout << "Note: Place your images in the 'input/' directory" << std::endl;
+            std::cout << "\nExample: " << argv[0] << " --input=photo.jpg" << std::endl;
+            std::cout << "         (File should be at: input/photo.jpg)" << std::endl;
             infile.close();
             exit(EXIT_FAILURE);
         }
@@ -265,19 +261,30 @@ int main(int argc, char *argv[])
         npp::ImageCPU_8u_C1 oHostDstV(oDeviceDstV.size());
         oDeviceDstV.copyTo(oHostDstV.data(), oHostDstV.pitch());
 
-        // Generate output filenames
+        // Generate output filenames in output directory
         std::string sResultFilenameH = sFilename;
         std::string sResultFilenameV = sFilename;
-        std::string::size_type dot = sResultFilenameH.rfind('.');
+        
+        // Extract just the filename without path
+        std::string::size_type lastSlash = sFilename.rfind('/');
+        if (lastSlash == std::string::npos)
+            lastSlash = sFilename.rfind('\\');
+        
+        std::string baseFilename;
+        if (lastSlash != std::string::npos)
+            baseFilename = sFilename.substr(lastSlash + 1);
+        else
+            baseFilename = sFilename;
+        
+        std::string::size_type dot = baseFilename.rfind('.');
 
         if (dot != std::string::npos)
         {
-            sResultFilenameH = sResultFilenameH.substr(0, dot);
-            sResultFilenameV = sResultFilenameV.substr(0, dot);
+            baseFilename = baseFilename.substr(0, dot);
         }
 
-        sResultFilenameH += "_edges_horizontal.png";
-        sResultFilenameV += "_edges_vertical.png";
+        sResultFilenameH = "output/" + baseFilename + "_edges_horizontal.png";
+        sResultFilenameV = "output/" + baseFilename + "_edges_vertical.png";
 
         // Save results as PNG for easy viewing
         std::cout << "\nSaving results..." << std::endl;
