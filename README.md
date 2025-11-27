@@ -360,6 +360,11 @@ deviceQuery  # From CUDA samples
 ### Version
 Edge Detection NPP - Standalone Version 1.0
 
+### Author
+**Saurav Haldar**  
+Roll No: 2022464  
+IIIT Delhi
+
 ### License
 This is a simplified, standalone version extracted from the larger NVIDIA NPP samples collection.
 
