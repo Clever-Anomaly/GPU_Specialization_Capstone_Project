@@ -19,6 +19,18 @@ For a complete demonstration of this project and validation of its functionality
 
 The notebook serves as both documentation and proof of concept for the edge detection implementation.
 
+
+### Video Demonstration
+
+Watch the complete demonstration of the notebook execution:  
+**[Video Demo - Edge Detection NPP Notebook Run](https://drive.google.com/file/d/1hjPSBLGq8QScaWlH4iZ7J6iJqsNkW0NW/view?usp=sharing)**
+
+This video walkthrough shows:
+- Real-time execution of the edge detection pipeline
+- Visual output comparisons for different test images
+- Performance benchmarks on GPU
+- Validation of algorithm correctness
+
 ---
 
 ## Prerequisites
